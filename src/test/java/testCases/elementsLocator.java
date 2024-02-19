@@ -33,11 +33,14 @@ public class elementsLocator {
 		driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("didar584102@gmail.com");
 		driver.findElement(By.cssSelector("input[placeholder='Phone Number']")).sendKeys("01843650796");
 		driver.findElement(By.className("reset-pwd-btn")).click();
+		//driver.findElement(By.xpath("//div[contains(@class,'forgot-pwd-btn-conainer')]/button[2]")).click(); //by using xpath child
 		System.out.println(driver.findElement(By.cssSelector(".infoMsg")).getText());
 		driver.findElement(By.className("go-to-login-btn")).click();
 		driver.findElement(By.cssSelector("#inputUsername")).sendKeys("didar");
 		driver.findElement(By.cssSelector("input[type='password']")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.cssSelector("button[type='submit']")).click(); 
+		//driver.findElement(By.xpath("//button[contains(@class,'submit')]") // regular expression
+		
 
 	}
 

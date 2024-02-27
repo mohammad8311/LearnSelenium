@@ -13,7 +13,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Locators2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
@@ -22,15 +22,29 @@ public class Locators2 {
 		driver.get("https://rahulshettyacademy.com/locatorspractice/");
 		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
-		driver.findElement(By.id("inputUsername")).sendKeys("didar");
+		String name = "didar";
+		driver.findElement(By.id("inputUsername")).sendKeys(name);
 		driver.findElement(By.name("inputPassword")).sendKeys("rahulshettyacademy");
 		driver.findElement(By.className("signInBtn")).click();
 		System.out.println(driver.findElement(By.tagName("p")).getText());
 		//Assert.assertEquals(System.out.println(driver.findElement(By.tagName("p")).getText()), "You are successfully logged in");
 		//String actualText = driver.findElement(By.tagName("p")).getText();
 		//assertEquals("You are successfully logged in", actualText);
-		assertEquals("You are successfully logged in", driver.findElement(By.tagName("p")).getText());
+		Thread.sleep(1000);
+		System.out.println(driver.findElement(By.tagName("p")).getText());
+		assertEquals("You are successfully logged in.", driver.findElement(By.tagName("p")).getText());
 		
+		
+		//driver.findElement(By.cssSelector("div[class='login-container'] h2")).getText();
+		//System.out.println(driver.findElement(By.cssSelector("div[class='login-container'] h2")).getText());
+		Assert.assertEquals(driver.findElement(By.cssSelector("div[class='login-container'] h2")).getText(), "Hello " + name + ",");
+		
+		//driver.findElement(By.cssSelector("h2")).getText();
+		//System.out.println(driver.findElement(By.cssSelector("h2")).getText());
+		
+		driver.findElement(By.xpath("//button[text()='Log Out']")).click();
+		//driver.findElement(By.xpath("//*[text()='Log Out']")).click(); // * means all HTML tag
+		driver.close();
 		
 		
  

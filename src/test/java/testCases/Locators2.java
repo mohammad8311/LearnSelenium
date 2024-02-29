@@ -49,5 +49,16 @@ public class Locators2 {
 		
  
 	}
+	
+	public void getPassword(WebDriver driver ) throws InterruptedException {
+		
+		driver.get("https://rahulshettyacademy.com/locatorspractice/");
+		driver.findElement(By.linkText("Forgot your password?")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.className("reset-pwd-btn")).click();
+		String passwordText = driver.findElement(By.cssSelector(".infoMsg")).getText();
+		
+	}
 
 }
